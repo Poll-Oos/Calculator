@@ -1,0 +1,306 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: normal;
+}
+
+:root {
+    --bg-gradient-light: linear-gradient(to right, #00416A, #E4E5E6);
+    --bg-gradient-dark: linear-gradient(to right, #1a1a1a, #2d2d2d);
+    --calculator-bg-light: #e0e0e0;
+    --calculator-bg-dark: #2d2d2d;
+    --display-bg-light: #c3d4c3;
+    --display-bg-dark: #1a1a1a;
+    --text-light: #000;
+    --text-dark: #fff;
+    --button-bg-light: #f0f0f0;
+    --button-bg-dark: #333;
+    --operator-bg-light: #ff9500;
+    --operator-bg-dark: #ff9500;
+    --function-bg-light: #d4d4d4;
+    --function-bg-dark: #444;
+    --button-shadow-light: inset 0 0 5px rgba(0,0,0,0.2);
+    --button-shadow-dark: inset 0 0 5px rgba(255,255,255,0.1);
+    --calculator-border-light: #b0b0b0;
+    --calculator-border-dark: #1a1a1a;
+    --clear-entry-bg-light: #ff9500;
+    --clear-entry-bg-dark: #ff9500;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-gradient-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+body.dark-theme {
+    background: var(--bg-gradient-dark);
+}
+
+.calculator {
+    background-color: var(--calculator-bg-light);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    width: 350px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--calculator-border-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.calculator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    border-radius: 13px 13px 0 0;
+}
+
+.dark-theme .calculator {
+    background-color: var(--calculator-bg-dark);
+    border-color: var(--calculator-border-dark);
+}
+
+.theme-toggle {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.theme-toggle button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .theme-toggle button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.display {
+    background-color: var(--display-bg-light);
+    padding: 25px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+    transition: background-color 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    border-radius: 7px 7px 0 0;
+}
+
+.dark-theme .display {
+    background-color: var(--display-bg-dark);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.previous-operand {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    min-height: 24px;
+    transition: color 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+.dark-theme .previous-operand {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.current-operand {
+    color: var(--text-light);
+    font-size: 2.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-family: 'Courier New', monospace;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.dark-theme .current-operand {
+    color: var(--text-dark);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    font-size: 1.3rem;
+    border: none;
+    outline: none;
+    background-color: var(--button-bg-light);
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.1s;
+    box-shadow: var(--button-shadow-light);
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    flex: 1;
+    min-width: 0;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    border-radius: 8px 8px 0 0;
+}
+
+.dark-theme button {
+    background-color: var(--button-bg-dark);
+    color: var(--text-dark);
+    box-shadow: var(--button-shadow-dark);
+}
+
+button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px);
+}
+
+.dark-theme button:hover {
+    background-color: #444;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.span-two {
+    flex: 2;
+}
+
+.operator {
+    background-color: var(--operator-bg-light);
+    color: white;
+    font-weight: bold;
+}
+
+.dark-theme .operator {
+    background-color: var(--operator-bg-dark);
+}
+
+.function {
+    background-color: var(--function-bg-light);
+    color: #495057;
+    font-size: 1.1rem;
+}
+
+.dark-theme .function {
+    background-color: var(--function-bg-dark);
+    color: #fff;
+}
+
+.equals {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.equals:hover {
+    background-color: #0056b3;
+}
+
+.clear, .delete {
+    background-color: #dc3545;
+    color: white;
+    font-weight: bold;
+}
+
+.clear:hover, .delete:hover {
+    background-color: #c82333;
+}
+
+.clear-entry {
+    background-color: var(--clear-entry-bg-light);
+    color: white;
+    font-weight: bold;
+}
+
+.dark-theme .clear-entry {
+    background-color: var(--clear-entry-bg-dark);
+}
+
+.clear-entry:hover {
+    background-color: #e67e00;
+}
+
+.keyboard-hints {
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: color 0.3s ease;
+    background: rgba(255,255,255,0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+.dark-theme .keyboard-hints {
+    color: #aaa;
+    background: rgba(0,0,0,0.2);
+}
+
+@media (max-width: 480px) {
+    .calculator {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .row {
+        gap: 8px;
+    }
+    
+    button {
+        padding: 12px 8px;
+        font-size: 1.1rem;
+    }
+    
+    .current-operand {
+        font-size: 2rem;
+    }
+} 

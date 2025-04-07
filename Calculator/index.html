@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="theme-toggle">
+            <button id="themeToggle">🌙</button>
+        </div>
+        <div class="display">
+            <div class="previous-operand"></div>
+            <div class="current-operand">0</div>
+        </div>
+        <div class="buttons">
+            <div class="row">
+                <button class="clear">AC</button>
+                <button class="delete">DEL</button>
+                <button class="operator">÷</button>
+            </div>
+            <div class="row">
+                <button class="function">sin</button>
+                <button class="function">cos</button>
+                <button class="function">tan</button>
+                <button class="function">√</button>
+            </div>
+            <div class="row">
+                <button class="function">x²</button>
+                <button class="function">xʸ</button>
+                <button class="function">log</button>
+                <button class="function">ln</button>
+            </div>
+            <div class="row">
+                <button class="number">7</button>
+                <button class="number">8</button>
+                <button class="number">9</button>
+                <button class="operator">×</button>
+            </div>
+            <div class="row">
+                <button class="number">4</button>
+                <button class="number">5</button>
+                <button class="number">6</button>
+                <button class="operator">-</button>
+            </div>
+            <div class="row">
+                <button class="number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+                <button class="operator">+</button>
+            </div>
+            <div class="row">
+                <button class="number span-two">0</button>
+                <button class="number">.</button>
+                <button class="equals">=</button>
+            </div>
+        </div>
+    </div>
+    <div class="keyboard-hints">
+        <p>Keyboard shortcuts: Numbers (0-9), Operators (+, -, *, /), Enter (=), Backspace (DEL), Escape (AC)</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
